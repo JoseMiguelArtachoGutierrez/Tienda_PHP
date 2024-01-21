@@ -103,7 +103,12 @@ class Usuario{
         }
         return $result;
     }
-
+    public function getAll(){
+        $this->db->consulta("select * from usuarios");
+        $usuarios=$this->db->extraer_todos();
+        $this->db->cierraConexion();
+        return $usuarios;
+    }
     /* GETTERS Y SETTERS */
     public function getId(): string|null
     {

@@ -64,6 +64,9 @@ class Routes
         Router::add('GET','/Pedido/eliminarPedido/:id',function ($id){
             return (new PedidoController())->eliminarPedido($id);
         });
+        Router::add('GET','/Pedido/enviarPedido/:id',function ($id){
+            return (new PedidoController())->enviarPedido($id);
+        });
         /* CATEGORIAS */
         Router::add('GET','/Categoria/mostrarProductosUnaCategoria/:id',function ($id){
             return (new CategoriaController())->mostrarProductosUnaCategoria($id);

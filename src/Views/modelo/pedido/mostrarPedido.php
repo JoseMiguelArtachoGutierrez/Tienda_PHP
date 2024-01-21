@@ -98,6 +98,7 @@ if (isset($_SESSION['linea_pedido_eliminado'])){
                 <td><?= $pedido['hora'] ?></td>
                 <td><?= $pedido['estado'] ?></td>
                 <td class="ultimo">
+                    <a href="<?=BASE_URL?>Pedido/enviarPedido/<?= $pedido['id'] ?>">Enviar</a>
                     <a href="<?=BASE_URL?>Pedido/eliminarPedido/<?= $pedido['id'] ?>">Eliminar</a>
                 </td>
             </tr>

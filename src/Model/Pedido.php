@@ -109,30 +109,11 @@ class Pedido{
     }
     public function update(){
         $id=$this->getId();
-        $categoria_id=$this->getCategoriaId();
-        $nombre=$this->getNombre();
-        $descripcion=$this->getDescripcion();
-        $precio=$this->getPrecio();
-        $stock=$this->getStock();
-        $oferta=$this->getOferta();
-        $fecha=$this->getFecha();
-        $imagen=$this->getImagen();
-        $enVenta= $this->isEnVenta();
+        $estado= $this->getEstado();
         try {
-            $hola=$this->db->prepara("update productos set categoria_id=:categoria_id,
-                     nombre=:nombre,descripcion=:descripcion,precio=:precio,stock=:stock,oferta=:oferta
-                     ,fecha=:fecha,imagen=:imagen, enVenta=:enVenta 
-                  where id=:id ");
+            $hola=$this->db->prepara("update pedidos set estado=:estado where id=:id ");
             $hola->bindValue(":id",$id);
-            $hola->bindValue(":categoria_id",$categoria_id);
-            $hola->bindValue(":nombre",$nombre);
-            $hola->bindValue(":descripcion",$descripcion);
-            $hola->bindValue(":precio",$precio);
-            $hola->bindValue(":stock",$stock);
-            $hola->bindValue(":oferta",$oferta);
-            $hola->bindValue(":fecha",$fecha);
-            $hola->bindValue(":imagen",$imagen);
-            $hola->bindValue(":enVenta",$enVenta);
+            $hola->bindValue(":estado",$estado);
             $hola->execute();
             $resultado=true;
         }catch (\PDOException $e){

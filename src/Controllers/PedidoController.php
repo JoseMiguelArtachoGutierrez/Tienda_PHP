@@ -78,6 +78,29 @@ class PedidoController{
         }
         header("Location: /tienda/Pedido/gestionarPedido/");
     }
+    public function enviarPedido($id){
+        $usuarios=UsuarioController::todosLosUsuarios();
+        $pedidos=PedidoController::todosLosPedidos();
+
+        $emailUsu=null;
+        foreach ($usuarios as $usuario){
+            foreach ($pedidos as $pedidoPrueba){
+                if ($pedidoPrueba['id']==$id){
+                    $emailUsu=$usuario['email'];
+                }
+            }
+
+        }
+
+        $pedido=Pedido::fromArray(['estado'=>"enviado","id"=>$id]);
+        if ($pedido->update()){
+            EmailController::enviarCorreo($emailUsu);
+            $_SESSION['pedido_enviado']="Pedido enviado ";
+        }else{
+            $_SESSION['pedido_enviado']="Pedido no enviado ";
+        }
+
+    }
     public static function todosLosPedidos(){
         $pedido=Pedido::fromArray([]);
         return $pedido->getAll();

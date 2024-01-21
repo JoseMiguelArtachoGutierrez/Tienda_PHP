@@ -56,7 +56,10 @@ class UsuarioController{
         }
         $this->pages->render("usuario/registro");
     }
-
+    public static function todosLosUsuarios(){
+        $usuario=Usuario::fromArray([]);
+        return $usuario->getAll();
+    }
     public function logout(){
         utils::deleteSession('identity');
         header("Location: " . BASE_URL);
