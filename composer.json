@@ -1,0 +1,24 @@
+{
+    "name": "josem/tienda",
+    "description": "Proyecto tienda",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Josem\\tienda\\": "src/",
+            "Controllers\\": "./src/Controllers",
+            "Model\\": "./src/Model",
+            "lib\\": "./src/lib",
+            "Routes\\": "./src/Routes",
+            "config\\": "./config",
+            "utils\\": "./src/utils",
+            "repositorios\\": "./src/repositorios",
+            "services\\": "./src/services"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "stefangabos/zebra_pagination": "2.4.5",
+        "vlucas/phpdotenv": "^5.6",
+        "dompdf/dompdf": "^2.0"
+    }
+}
